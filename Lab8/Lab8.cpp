@@ -1,52 +1,48 @@
-﻿#include <iostream>
+#include <iostream>
 using namespace std;
-
-int factorial(int n)
+struct tnode
 {
-    if (n <= 1)  
+    int field;
+    struct tnode* left;
+    struct tnode* right;
+};
+void treeprint(tnode* tree)
+{
+    if (tree != NULL)
     {
-        return 1;
+        treeprint(tree->left);
+        cout << tree->field << " ";
+        treeprint(tree->right);
     }
-    return n * factorial(n - 1); 
 }
-void reverseBinary(int n)
+struct tnode* addnode(int x, tnode* tree)
 {
-    if (n == 0) 
+    if (tree == NULL)
     {
-        return;
+        tree = new tnode;
+        tree->field = x;
+        tree->left = NULL;
+        tree->right = NULL;
     }
-    cout << n % 2;
-    reverseBinary(n / 2); 
+    else
+        if (x < tree->field)
+            tree->left = addnode(x, tree->left);
+        else
+            tree->right = addnode(x, tree->right);
+    return(tree);
 }
-
-void forvardBinary(int n)
+int main()
 {
-    if (n == 0)
+    struct tnode* root = 0;
+    int a;
+    for (int i = 0; i < 8; i++)
     {
-        return;
+        cout << "Введите узел " << i + 1 << " : ";
+        cin >> a;
+        root = addnode(a, root);
     }
-    forvardBinary(n / 2); 
-    cout << n % 2;
-}
-
-
-void ReverseForvardBinary(int n)
-{
-    if (n == 0) 
-    {
-        return;
-    }
-    cout << n % 2; 
-    ReverseForvardBinary(n / 2); 
-    cout << n % 2; 
-}
-
-
-int product(int x, int y)
-{
-    if (y == 0) 
-    {
-        return 0;
-    }
-    return (x + product(x, y - 1)); 
+    treeprint(root);
+    cin.get();
+    cin.get();
+    return 0;
 }
