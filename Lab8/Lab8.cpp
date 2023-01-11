@@ -35,7 +35,7 @@ int main()
 {
     struct tnode* root = 0;
     int a;
-    for (int i = 0; i < 8; i++)
+    for (int i = 0; i < 6; i++)
     {
         cout << "Введите узел " << i + 1 << " : ";
         cin >> a;
