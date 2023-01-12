@@ -37,7 +37,7 @@ int main()
     int a;
     for (int i = 0; i < 6; i++)
     {
-        cout << "Введите узел " << i + 1 << " : ";
+        cout << "Input tnode " << i + 1 << " : ";
         cin >> a;
         root = addnode(a, root);
     }
