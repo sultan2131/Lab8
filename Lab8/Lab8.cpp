@@ -43,6 +43,5 @@ int main()
     }
     treeprint(root);
     cin.get();
-    cin.get();
     return 0;
 }
